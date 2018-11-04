@@ -1,0 +1,22 @@
+package:
+  redis:
+    installed: true
+    versions:
+    - 4.0.11-r0
+user:
+  nobody:
+    exists: true
+    uid: 65534
+    gid: 65534
+    groups:
+    - nobody
+    home: /
+    shell: /sbin/nologin
+port:
+  tcp:6379:
+    listening: true
+    ip:
+    - 0.0.0.0
+process:
+  redis-server:
+    running: true
