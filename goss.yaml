@@ -1,8 +1,6 @@
 file:
   /var/www/app/index.html:
     exists: true
-    mode: "0644"
-    size: 28
     owner: nginx
     group: nginx
     filetype: file
