@@ -82,4 +82,5 @@ test:
 .PHONY: test/openshift
 .ONESHELL: test/openshift
 test/openshift:
-	docker run -p 8888:8080 -it -u 65534:65534 ezmid/vintage-nginx:latest
+	# docker run -p 8888:8080 -it -u 65534:65534 ezmid/vintage-nginx:latest
+	docker run -p 8888:8080 -it -u 1065534:1065534 ezmid/vintage-nginx:latest

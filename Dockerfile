@@ -19,6 +19,10 @@ RUN chown -R nobody:nobody \
         /var/lib/nginx/logs \
         /var/log/nginx \
         /var/tmp \
+        /run/nginx && \
+    chmod -R 0777 \
+        /var/tmp \
+        /var/lib/nginx/logs \
         /run/nginx
 
 ################################################################################
