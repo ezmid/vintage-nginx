@@ -1,24 +1,22 @@
 file:
   /var/www/app/index.html:
     exists: true
-    owner: nginx
-    group: nginx
+    owner: nobody
+    group: nobody
     filetype: file
     contains: []
 package:
   nginx:
     installed: true
     versions:
-    - 1.14.0-r1
+    - 1.14.2-r0
 port:
   tcp:80:
-    listening: true
-    ip:
-    - 0.0.0.0
+    listening: false
+  tcp6:80:
+    listening: false
   tcp:8080:
     listening: true
-    ip:
-    - 0.0.0.0
 user:
   nginx:
     exists: true
@@ -40,3 +38,10 @@ user:
 process:
   nginx:
     running: true
+http:
+  http://localhost:8080/:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 1000
+    body: ["Nginx is working..."]

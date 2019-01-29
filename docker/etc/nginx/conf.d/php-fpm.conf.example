@@ -1,10 +1,10 @@
 server {
     listen 8080;
-    server_name *.dev.ezmid.com;
+    server_name localhost;
     server_name_in_redirect off;
     root /var/www/app;
-    access_log /var/log/nginx/app.access.log  combined;
-    error_log /var/log/nginx/app.error.log  warn;
+    access_log /dev/stdout combined;
+    error_log /dev/stderr info;
     gzip on;
     keepalive_timeout 70 10;
     client_max_body_size 100M;

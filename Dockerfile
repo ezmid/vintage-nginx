@@ -3,11 +3,10 @@ FROM alpine:3.8
 MAINTAINER Filip Cieker <filip.cieker@ezmid.com>
 LABEL maintainer="Filip Cieker filip.cieker@ezmid.com"
 
-USER root
-
 ################################################################################
 # Layer 1 - Install Nginx
-RUN apk --no-cache add \
+RUN apk --no-cache --update upgrade && \
+    apk add \
         nginx
 
 ################################################################################
@@ -16,10 +15,12 @@ COPY docker /
 
 ################################################################################
 # Layer 3 - Fix app dir rights
-RUN chown -R nginx:nginx \
-        /var/www/app \
-        /var/lib/nginx \
-        /var/log/nginx
+RUN chown -R nobody:nobody \
+        /var/www/app/index.html \
+        /var/lib/nginx/logs \
+        /var/log/nginx \
+        /var/tmp \
+        /run/nginx
 
 ################################################################################
 # Init system

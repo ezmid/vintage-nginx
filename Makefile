@@ -28,16 +28,17 @@ ECHO=$(shell which echo)
 ################################################################################
 # Specific project variables
 ################################################################################
-REGISTRY=hub.docker.com
+REGISTRY=
 NAMESPACE=ezmid
 IMAGE=vintage-nginx
 TAG=latest
+IMAGE_NAME=$(NAMESPACE)/$(IMAGE)
 
 ################################################################################
 # Manual
 .ONESHELL: default
 .PHONY: default
-default: 
+default:
 	@$(ECHO) -e "\n$(FORMAT_BOLD)VINTAGE MAKE TOOL$(FORMAT_RESET)\n" \
 	"\n" \
 	"$(FORMAT_YELLOW)Variables:$(FORMAT_RESET)\n" \
@@ -60,18 +61,26 @@ default:
 .PHONY: build
 .ONESHELL: build
 build:
-	docker build . -t $(REGISTRY)/$(NAMESPACE)/$(IMAGE):$(TAG)
+	# docker build . -t $(IMAGE_NAME):$(TAG) --no-cache
+	docker build . -t $(IMAGE_NAME):$(TAG)
 
 ################################################################################
 # Push the image to registry
 .PHONY: push
 .ONESHELL: push
 push:
-	docker push $(REGISTRY)/$(NAMESPACE)/$(IMAGE):$(TAG)
+	docker push $(IMAGE_NAME):$(TAG)
 
 ################################################################################
 # Run a test
 .PHONY: test
 .ONESHELL: test
 test:
-	@dgoss run $(REGISTRY)/$(NAMESPACE)/$(IMAGE):$(TAG)
+	@dgoss run $(IMAGE_NAME):$(TAG)
+
+################################################################################
+# Run an Open Shift test
+.PHONY: test/openshift
+.ONESHELL: test/openshift
+test/openshift:
+	docker run -p 8888:8080 -it -u 65534:65534 ezmid/vintage-nginx:latest
