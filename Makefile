@@ -61,8 +61,7 @@ default:
 .PHONY: build
 .ONESHELL: build
 build:
-	# docker build . -t $(IMAGE_NAME):$(TAG) --no-cache
-	docker build . -t $(IMAGE_NAME):$(TAG)
+	docker build . -t $(IMAGE_NAME):$(TAG) --no-cache
 
 ################################################################################
 # Push the image to registry

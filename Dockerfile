@@ -1,6 +1,5 @@
 FROM alpine:3.8
 
-MAINTAINER Filip Cieker <filip.cieker@ezmid.com>
 LABEL maintainer="Filip Cieker filip.cieker@ezmid.com"
 
 ################################################################################
