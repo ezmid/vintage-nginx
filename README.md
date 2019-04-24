@@ -2,11 +2,10 @@
 
 [![Build Status](https://travis-ci.org/ezmid/vintage-nginx.svg?branch=master)](https://travis-ci.org/ezmid/vintage-nginx) ![Docker Hub Status](https://img.shields.io/docker/build/ezmid/vintage-nginx.svg) ![Image Pulls](https://img.shields.io/docker/pulls/ezmid/vintage-nginx.svg) ![Image Stars](https://img.shields.io/docker/stars/ezmid/vintage-nginx.svg)
 
-This is a simple docker image with NGINX server build on top of Alpine Linux for development purposes.
+This is a simple docker image with NGINX server build on top of Alpine Linux for development purposes. To be run in something like OpenShift Origin.
 
-## Installation
 
-**Requirements**
+## Requirements
 - [GIT](https://git-scm.com/) >= 2.15
 - [Docker CE](https://www.docker.com/) >= 17.12.0
 - [Goss](https://github.com/aelsabbahy/goss) >= 0.3, optional
@@ -14,7 +13,7 @@ This is a simple docker image with NGINX server build on top of Alpine Linux for
 
 **Currently Goss is not available for Windows. Build everything else works on all platforms.*
 
-## Development
+## Quick howto
 ```sh
 # Build the image, TAG=latest is the default value
 $ make build
